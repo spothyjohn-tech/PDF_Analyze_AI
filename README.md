@@ -49,7 +49,7 @@ graph TD
         txt_reader -->|4. Стриминг текста| Giga
         
         Giga -->|5. Системный промпт| LLM((GigaChat Модель))
-        LLM -->|6. Саммари ответа| User
+        LLM -->|6. Суммари ответа| User
         
         User -->|7. Запрос на скачивание| API_Down[Endpoint: download-file]
         API_Down -->|8. Сборка отчета с DejaVu Font| ReportLab[ReportLab Engine / Docx Generator]
