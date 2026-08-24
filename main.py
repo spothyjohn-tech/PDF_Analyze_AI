@@ -14,7 +14,7 @@ current_dir = os.path.dirname(__file__)
 cert_path = os.path.join(current_dir, "russian_trusted_root_ca.cer")
 
 giga = GigaChat(
-   credentials="MDE5YzZmNTAtMThkOC03OTI4LWI4N2YtNzkyNGU4NzhjNTEyOjExOTBkYjM0LWUyNzAtNDNkZS1iYjU5LWNjMjU0NTE0OTcxNA==",
+   credentials="YOUR_API",
    ca_bundle_file=cert_path
 )
 
