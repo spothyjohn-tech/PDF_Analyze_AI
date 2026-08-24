@@ -34,11 +34,12 @@
 
 ```mermaid
 graph TD
-    User([Пользователь / Клиент React 19]) -->|1. Загрузка файла| API_Proc[/api/process-file]
-    
-    subgraph FastAPI Бэкенд
-        API_Proc -->|2. Сохранение| TempFile[Временный файл tempfile]
+    User([Пользователь / Клиент React 19]) -->|1. Загрузка файла| API_Proc
+
+    subgraph FastAPI Backend ["FastAPI Бэкенд"]
+        API_Proc[Endpoint: process-file] -->|2. Сохранение| TempFile[Временный файл tempfile]
         TempFile -->|3. Извлечение текста| Parser{Формат файла?}
+        
         Parser -->|PDF| pdfplumber[pdfplumber engine]
         Parser -->|DOCX| docx_reader[docx / python-docx]
         Parser -->|TXT / MD| txt_reader[utf-8 plain reader]
@@ -50,7 +51,7 @@ graph TD
         Giga -->|5. Системный промпт| LLM((GigaChat Модель))
         LLM -->|6. Саммари ответа| User
         
-        User -->|7. Запрос на скачивание| API_Down[/api/download-file]
+        User -->|7. Запрос на скачивание| API_Down[Endpoint: download-file]
         API_Down -->|8. Сборка отчета с DejaVu Font| ReportLab[ReportLab Engine / Docx Generator]
         ReportLab -->|9. FileResponse| User
     end
